@@ -1,5 +1,5 @@
 import tensorflow as tf
-from tensorflow.contrib.framework import add_arg_scope
+from tf_slim import add_arg_scope
 
 from tfsnippet.utils import (ParamSpec,
                              get_static_shape,

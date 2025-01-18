@@ -185,8 +185,10 @@ class BayesianNet(object):
                             format(name, flow))
 
         distribution = as_distribution(distribution)
+        print("Afer as_distribution")
         if flow is not None:
             distribution = FlowDistribution(distribution, flow)
+        print("After FlowDistribution")
 
         if name in self._observed:
             t = StochasticTensor(
@@ -203,7 +205,7 @@ class BayesianNet(object):
                 is_reparameterized=is_reparameterized,
             )
             assert(isinstance(t, StochasticTensor))
-
+        print("After last if")
         self._stochastic_tensors[name] = t
         return t
 

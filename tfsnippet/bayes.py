@@ -191,6 +191,7 @@ class BayesianNet(object):
         print("After FlowDistribution")
 
         if name in self._observed:
+            print("In if")
             t = StochasticTensor(
                 distribution=distribution,
                 tensor=self._observed[name],
@@ -198,12 +199,15 @@ class BayesianNet(object):
                 group_ndims=group_ndims,
                 is_reparameterized=is_reparameterized,
             )
+            print("After StochasticTensor")
         else:
+            print("In else")
             t = distribution.sample(
                 n_samples=n_samples,
                 group_ndims=group_ndims,
                 is_reparameterized=is_reparameterized,
             )
+            print("After sample")
             assert(isinstance(t, StochasticTensor))
         print("After last if")
         self._stochastic_tensors[name] = t
